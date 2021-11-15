@@ -1,17 +1,16 @@
-package MainPackage.dbmanager.model;
+package MainPackage.dbmanager.assets;
 
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.redis.core.RedisHash;
 import org.springframework.data.redis.core.index.Indexed;
+import org.springframework.stereotype.Component;
 
 @Setter
 @Getter
-@RedisHash("USER")
-public class User {
+@Component
+public class UserAsset {
     private String id;
-    @Indexed
     private String username;
-    @Indexed
     private String password;
 }

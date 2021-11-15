@@ -1,0 +1,44 @@
+
+.imgStyle{
+    box-shadow: 10px 10px 80px 15px black, 10px 10px 100px 10px black;
+    margin-top: 10% !important;
+    /* border-radius: 50%; */
+    
+}
+
+input{
+    font-family: iranSans;
+    font-size: 30px;
+    /* height: 200%; */
+    /* box-shadow: 10px 10px 80px 15px white, 10px 10px 100px 1px orange; */
+    margin-top: 0%;
+    margin-bottom: 0%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    background-image: url('/assets/Images/UserInput.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 100%;
+    width: 100%;
+    min-height: 100px !important;
+    max-height: 100%;
+    color: white;
+    direction: ltr;
+    outline: none;
+    
+}
+span{
+    font-family: iranSans;
+    font-size: 22px;
+    color: white;
+}
+.Imgbutton{
+    /* box-shadow: 10px 10px 80px 15px white, 10px 10px 100px 1px orange; */
+    width: 100%;
+    /* margin-bottom: 100%; */
+    cursor: pointer;
+    /* height: 100%; */
+    margin-top: 2%;
+    margin-bottom: 2%;
+}

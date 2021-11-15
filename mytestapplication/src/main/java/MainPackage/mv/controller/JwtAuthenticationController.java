@@ -1,11 +1,13 @@
 package MainPackage.mv.controller;
 
+import MainPackage.dbmanager.assets.UserAsset;
 import MainPackage.jwt.JwtRequest;
 import MainPackage.jwt.JwtResponse;
 import MainPackage.jwt.JwtTokenUtil;
 import MainPackage.mv.service.JwtUserDetailsService;
 
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,10 +15,15 @@ import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @RestController
 @CrossOrigin
+@Slf4j
 public class JwtAuthenticationController {
     @Autowired
     private AuthenticationManager authenticationManager;
@@ -27,17 +34,33 @@ public class JwtAuthenticationController {
     @Autowired
     private JwtUserDetailsService userDetailsService;
 
-    @PostMapping("/authenticate")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest) throws Exception {
+    @Autowired
+    private UserAsset userAsset;
 
-        authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+    @PostMapping("/Login")
+    @ResponseBody
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody JwtRequest authenticationRequest,
+                                                       HttpServletRequest httpServletRequest,
+                                                       HttpServletResponse httpServletResponse) throws Exception {
+        userAsset.setUsername(authenticationRequest.getUsername());
+        BCryptPasswordEncoder bCryptPasswordEncoder = new BCryptPasswordEncoder();
+        userAsset.setPassword(bCryptPasswordEncoder.encode(authenticationRequest.getPassword()));
 
-        final UserDetails userDetails = userDetailsService
-                .loadUserByUsername(authenticationRequest.getUsername());
 
-        final String token = jwtTokenUtil.generateToken(userDetails);
+        String token;
+
+        try {
+            authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
+            final UserDetails userDetails = userDetailsService
+                    .loadUserByUsername(authenticationRequest.getUsername());
+            token = jwtTokenUtil.generateToken(userDetails);
+        } catch (Exception e) {
+            token = "wrong username or password";
+        }
 
         return ResponseEntity.ok(new JwtResponse(token));
+
+
     }
 
     private void authenticate(String username, String password) throws Exception {
