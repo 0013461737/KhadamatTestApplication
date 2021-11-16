@@ -3,6 +3,7 @@ package MainPackage.dbmanager.model;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.redis.core.RedisHash;
+import org.springframework.data.redis.core.index.Indexed;
 
 @Setter
 @Getter
@@ -17,4 +18,7 @@ public class Order {
     private int channelId;
     private long amount;
     private int quantity;
+    private String trackingCode;
+    @Indexed
+    private String sortingVal;
 }

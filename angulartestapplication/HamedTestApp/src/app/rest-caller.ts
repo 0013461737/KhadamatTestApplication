@@ -9,7 +9,17 @@ export class RestCaller {
     constructor (private httpClient : HttpClient){
     }
     private callGetApi(path:string){
-        return this.httpClient.get('/KHADAMAT/'+path);
+        var token;
+        try{
+            token = localStorage.getItem("token");
+        }catch(e){
+            token = '';
+        }
+        let headers = new HttpHeaders({
+            'Content-Type' : 'application/json; charset=utf-8',
+            'Authorization' : 'Bearer '+token
+        });
+        return this.httpClient.get('/KHADAMAT/'+path,{'headers':headers});
     }
     private callPostApi(path:string , json:any){
         var token;
@@ -18,11 +28,11 @@ export class RestCaller {
         }catch(e){
             token = '';
         }
-        let headers = new HttpHeaders();
-        headers.set('Content-Type', 'application/json; charset=utf-8');
-        headers.set('Authorization' , 'Bearer '+token);
+        let headers = new HttpHeaders({
+            'Content-Type' : 'application/json; charset=utf-8',
+            'Authorization' : 'Bearer '+token
+        });
         let re = this.httpClient.post('/KHADAMAT/'+path,json,{'headers':headers});
-        var xxx = re.subscribe((response:any)  => console.log('mmmmmmmmmmmmmmmmmmmm'+response.status));
         return re;
     }
 

@@ -1,0 +1,82 @@
+
+.background{
+    box-shadow: 10px 10px 80px 1px black, 10px 10px 100px 1px black;
+    /* margin-top: 30% !important; */
+    height: 60%;
+    background-color: slateblue;
+    /* border-radius: 10%; */
+}
+
+span{
+    font-family: iranSans;
+    font-size: 20px;
+}
+.Imgbutton{
+    margin-top: 5%;
+    /* box-shadow: 10px 10px 80px 15px white, 10px 10px 100px 1px orange; */
+    width: 100%;
+    /* margin-bottom: 100%; */
+    cursor: pointer;
+}
+.labelDetail{
+    width: 40%;
+}
+.DivebackBtn{
+    margin-top: 2%;
+    text-align: left;
+}
+.backBtn{
+    width: 60px;
+    height: 60px;
+}
+.backIcn{
+    width: 50px;
+    height: 50px;
+}
+input{
+    font-family: iranSans;
+    font-size: 30px;
+    /* height: 200%; */
+    /* box-shadow: 10px 10px 80px 15px white, 10px 10px 100px 1px orange; */
+    margin-top: 5px;
+    margin-bottom: 0%;
+    text-align: center;
+    background: rgba(0, 0, 0, 0);
+    border: none;
+    background-image: url('/assets/Images/UserInput.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    width: 100%;
+    min-height: 100px !important;
+    max-height: 100%;
+    color: white;
+    direction: ltr;
+    outline: none;
+    
+}
+
+  
+  .divRow{
+    text-align: center;
+    border-radius: 20px;
+    margin-top: 5%;
+    font-weight: bold;
+}
+.divCol{
+    border-radius: 28%;
+    text-align: center;
+}
+
+button{
+    box-shadow: 10px 10px 80px 15px white, 10px 10px 100px 1px orange;
+    width: 100%;
+    
+}
+label{
+    font-family: iranSans;
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+}
+

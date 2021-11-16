@@ -19,7 +19,7 @@ input{
     background-image: url('/assets/Images/UserInput.png');
     background-repeat: no-repeat;
     background-position: center;
-    background-size: 100%;
+    background-size: contain;
     width: 100%;
     min-height: 100px !important;
     max-height: 100%;

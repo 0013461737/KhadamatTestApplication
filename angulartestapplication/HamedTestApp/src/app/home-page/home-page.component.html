@@ -1,1 +1,122 @@
-<p>home-page works!</p>
+<div class="container" dir="rtl">
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 DivebackBtn">
+            <button mat-mini-fab color="" class="backBtn" (click)="this.goToLogin()">
+                <mat-icon class="backIcn" svgIcon="back"></mat-icon>
+            </button>
+        </div>
+    </div>
+    <!--  -->
+
+    <div class="row" *ngIf="this.act">
+        <div class="col-sm-12 col-md-12 col-lg-12 divRow">
+            <label style="padding-top: 6%; font-size: 70px;">آخرین سفارش
+            </label>
+        </div>
+        <div class="col-sm-12 col-md-12 col-lg-12 divRow">
+            <div class="row" dir="rtl" style="vertical-align: middle;">
+
+                <div class="col-sm-5 col-md-5 col-lg-5 divCol" style="vertical-align: middle;">
+                    <label style="padding-top: 6%;">نام
+                    </label>
+                </div>
+                <div class="col-sm-7 col-md-7 col-lg-7 divCol" style="vertical-align: middle;">
+                    <input type="text"  disabled value="{{this.params[0].ORDER0.name}}">
+                </div>
+            </div>
+            <div class="row" dir="rtl" style="vertical-align: middle;">
+
+                <div class="col-sm-5 col-md-5 col-lg-5 divCol" style="vertical-align: middle;">
+                    <label style="padding-top: 6%;">نام خانوادگی
+                    </label>
+                </div>
+                <div class="col-sm-7 col-md-7 col-lg-7 divCol" style="vertical-align: middle;">
+                    <input type="text"  disabled value="{{this.params[0].ORDER0.family}}">
+                </div>
+            </div>
+            <div class="row" dir="rtl" style="vertical-align: middle;">
+
+                <div class="col-sm-5 col-md-5 col-lg-5 divCol" style="vertical-align: middle;">
+                    <label style="padding-top: 6%;">شماره تماس
+                    </label>
+                </div>
+                <div class="col-sm-7 col-md-7 col-lg-7 divCol" style="vertical-align: middle;">
+                    <input type="text"  disabled value="{{this.params[0].ORDER0.phone}}">
+                </div>
+            </div>
+            <div class="row" dir="rtl" style="vertical-align: middle;">
+
+                <div class="col-sm-5 col-md-5 col-lg-5 divCol" style="vertical-align: middle;">
+                    <label style="padding-top: 6%;">مبلغ خرید
+                    </label>
+                </div>
+                <div class="col-sm-7 col-md-7 col-lg-7 divCol" style="vertical-align: middle;">
+                    <input type="text"  disabled value="{{this.params[0].ORDER0.amount}}">
+                </div>
+            </div>
+            <div class="row" dir="rtl" style="vertical-align: middle;">
+
+                <div class="col-sm-5 col-md-5 col-lg-5 divCol" style="vertical-align: middle;">
+                    <label style="padding-top: 6%;">تعداد خرید
+                    </label>
+                </div>
+                <div class="col-sm-7 col-md-7 col-lg-7 divCol" style="vertical-align: middle;">
+                    <input type="text"  disabled value="{{this.params[0].ORDER0.quantity}}">
+                </div>
+            </div>
+            <div class="row" dir="rtl" style="vertical-align: middle;">
+
+                <div class="col-sm-5 col-md-5 col-lg-5 divCol" style="vertical-align: middle;">
+                    <label style="padding-top: 6%;">شماره پیگیری
+                    </label>
+                </div>
+                <div class="col-sm-7 col-md-7 col-lg-7 divCol" style="vertical-align: middle;">
+                    <input type="text"  disabled value="{{this.params[0].ORDER0.trackingCode}}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--  -->
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12 divRow">
+            <label style="padding-top: 6%;padding-bottom: 6%; font-size: 70px;">سفارش جدید
+            </label>
+        </div>
+        <div class="col-sm-12 col-sm-12 col-sm-12">
+            <input #name type="text" placeholder="نام" aria-label="Recipient's username" aria-describedby="basic-addon2"
+                required>
+        </div>
+        <div class="col-sm-12 col-sm-12 col-sm-12">
+            <input #family type="text" placeholder="نام خانوادگی" aria-label="Recipient's username"
+                aria-describedby="basic-addon2" required>
+        </div>
+        <div class="col-sm-12 col-sm-12 col-sm-12">
+            <input #phone type="text" placeholder="موبایل" aria-label="Recipient's username"
+                aria-describedby="basic-addon2" required>
+        </div>
+        <div class="col-sm-12 col-sm-12 col-sm-12">
+            <input #address type="text" placeholder="آدرس" aria-label="Recipient's username"
+                aria-describedby="basic-addon2" required>
+        </div>
+        <div class="col-sm-12 col-sm-12 col-sm-12">
+            <input #amount type="text" placeholder="مبلغ" aria-label="Recipient's username"
+                aria-describedby="basic-addon2" required>
+        </div>
+        <div class="col-sm-12 col-sm-12 col-sm-12">
+            <input #channelId type="hidden" placeholder="chanelId" aria-label="Recipient's username"
+                aria-describedby="basic-addon2" value="1" required>
+        </div>
+        <div class="col-sm-12 col-sm-12 col-sm-12">
+            <input #quantity type="text" placeholder="تعدا" aria-label="Recipient's username"
+                aria-describedby="basic-addon2" required>
+        </div>
+
+        <div class="col-sm-12 col-sm-12 col-sm-12" style="text-align: center;">
+            <img src="/assets/Images/CheckButton.png" style="width: 70%;" class="Imgbutton"
+                (click)="this.callOrderAdd(name.value,family.value,phone.value,address.value,amount.value,channelId.value,quantity.value)" *ngIf="!this.flag">
+            <img src="/assets/Images/Pending.svg" class="Imgbutton" style="width: 50%;" *ngIf="this.flag">
+        </div>
+    </div>
+</div>

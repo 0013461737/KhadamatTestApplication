@@ -7,9 +7,9 @@ import { AppComponent } from './app.component';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { HttpClientModule } from '@angular/common/http';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {MatButtonModule} from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
@@ -28,10 +28,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatButtonModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot({
-      timeOut: 4000,
-      positionClass: 'toast-top-full-width',
-      preventDuplicates: true,
-      closeButton : false
+      timeOut: 5000,
+      closeButton: false,
+      positionClass: "toast-top-full-width",
+      preventDuplicates: false,
+      
     })
   ],
   providers: [],
